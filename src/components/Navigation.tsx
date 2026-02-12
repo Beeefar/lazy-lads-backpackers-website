@@ -23,9 +23,19 @@ export function Navigation() {
               {nav.roomsLabel}
             </a>
           )}
+          {nav.adventuresLabel && (
+            <a href="#adventures" className="text-gray-600 hover:text-primary transition-colors">
+              {nav.adventuresLabel}
+            </a>
+          )}
           {nav.galleryLabel && (
             <a href="#gallery" className="text-gray-600 hover:text-primary transition-colors">
               {nav.galleryLabel}
+            </a>
+          )}
+          {nav.teamLabel && (
+            <a href="#team" className="text-gray-600 hover:text-primary transition-colors">
+              {nav.teamLabel}
             </a>
           )}
           {nav.contactLabel && (
@@ -61,9 +71,19 @@ export function Navigation() {
                 {nav.roomsLabel}
               </a>
             )}
+            {nav.adventuresLabel && (
+              <a href="#adventures" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+                {nav.adventuresLabel}
+              </a>
+            )}
             {nav.galleryLabel && (
               <a href="#gallery" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
                 {nav.galleryLabel}
+              </a>
+            )}
+            {nav.teamLabel && (
+              <a href="#team" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+                {nav.teamLabel}
               </a>
             )}
             {nav.contactLabel && (
