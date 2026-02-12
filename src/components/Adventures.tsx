@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { siteContent } from '@/config/site-content';
 import { motion } from 'framer-motion';
 
@@ -67,6 +68,12 @@ export function Adventures() {
                   <p className="mt-4 text-xs font-medium uppercase tracking-wide text-primary/80">
                     Book directly with our travel desk once you arrive.
                   </p>
+                  <Link
+                    href={`/adventures/${item.slug}`}
+                    className="mt-4 inline-block text-sm font-semibold text-primary underline underline-offset-4 hover:no-underline"
+                  >
+                    Learn more about {item.title.toLowerCase()}
+                  </Link>
                 </div>
               </motion.article>
             );
@@ -76,4 +83,5 @@ export function Adventures() {
     </section>
   );
 }
+
 

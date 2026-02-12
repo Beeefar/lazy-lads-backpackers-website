@@ -3,6 +3,7 @@ import { Montserrat, Inter } from 'next/font/google';
 import './globals.css';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { WhatsAppFloating } from '@/components/WhatsAppFloating';
 import { siteContent } from '@/config/site-content';
 
 const montserrat = Montserrat({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <WhatsAppFloating />
       </body>
     </html>
   );

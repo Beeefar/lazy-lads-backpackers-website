@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { siteContent } from '@/config/site-content';
 import { motion } from 'framer-motion';
 
@@ -7,7 +8,7 @@ const { blog } = siteContent;
 
 export function BlogPreview() {
   return (
-    <section className="bg-accent py-16 sm:py-24">
+    <section id="blog" className="bg-accent py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           className="text-center"
@@ -26,7 +27,7 @@ export function BlogPreview() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {blog.posts.map((post, index) => {
-            const formattedDate = new Date(post.date).toLocaleDateString(undefined, {
+            const formattedDate = new Date(post.date).toLocaleDateString('en-GB', {
               year: 'numeric',
               month: 'short',
               day: 'numeric',
@@ -47,9 +48,13 @@ export function BlogPreview() {
                 <h3 className="mt-2 font-heading text-lg font-bold text-primary">
                   {post.title}
                 </h3>
-                <p className="mt-3 text-sm text-gray-600">
-                  Full post coming soon. Ask the team at reception for tips in the meantime.
-                </p>
+                <p className="mt-3 text-sm text-gray-600 flex-1">{post.excerpt}</p>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="mt-4 inline-block text-sm font-semibold text-primary underline underline-offset-4 hover:no-underline"
+                >
+                  Read full story
+                </Link>
               </motion.article>
             );
           })}
@@ -58,4 +63,5 @@ export function BlogPreview() {
     </section>
   );
 }
+
 
