@@ -2,13 +2,15 @@
 
 import Link from 'next/link';
 import { siteContent } from '@/config/site-content';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const { siteName, nav, CLOUDBEDS_URL } = siteContent;
+const { siteName, nav, CLOUDBEDS_URL, adventures } = siteContent;
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
+  const [adventuresOpen, setAdventuresOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-secondary border-b border-accent">
@@ -23,9 +25,53 @@ export function Navigation() {
               {nav.roomsLabel}
             </a>
           )}
+          {nav.adventuresLabel && (
+            <div className="relative">
+              <button
+                type="button"
+                className="flex items-center gap-1 text-gray-600 hover:text-primary transition-colors"
+                onClick={() => setAdventuresOpen((prev) => !prev)}
+                aria-haspopup="menu"
+                aria-expanded={adventuresOpen}
+              >
+                <span>{nav.adventuresLabel}</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${adventuresOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+              <AnimatePresence>
+                {adventuresOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute right-0 mt-2 w-56 rounded-xl border border-accent bg-secondary py-2 shadow-lg"
+                  >
+                    {adventures.items.map((item) => (
+                      <Link
+                        key={item.id}
+                        href={`/adventures/${item.slug}`}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-accent hover:text-primary"
+                        onClick={() => setAdventuresOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
           {nav.galleryLabel && (
             <a href="#gallery" className="text-gray-600 hover:text-primary transition-colors">
               {nav.galleryLabel}
+            </a>
+          )}
+          {nav.teamLabel && (
+            <a href="#team" className="text-gray-600 hover:text-primary transition-colors">
+              {nav.teamLabel}
             </a>
           )}
           {nav.contactLabel && (
@@ -61,9 +107,55 @@ export function Navigation() {
                 {nav.roomsLabel}
               </a>
             )}
+            {nav.adventuresLabel && (
+              <div className="space-y-1">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-gray-600 hover:text-primary"
+                  onClick={() => setAdventuresOpen((prev) => !prev)}
+                  aria-expanded={adventuresOpen}
+                >
+                  <span>{nav.adventuresLabel}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform ${adventuresOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                <AnimatePresence initial={false}>
+                  {adventuresOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.18 }}
+                      className="ml-3 flex flex-col border-l border-accent pl-3 text-sm"
+                    >
+                      {adventures.items.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={`/adventures/${item.slug}`}
+                          className="py-1 text-gray-600 hover:text-primary"
+                          onClick={() => {
+                            setOpen(false);
+                            setAdventuresOpen(false);
+                          }}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
             {nav.galleryLabel && (
               <a href="#gallery" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
                 {nav.galleryLabel}
+              </a>
+            )}
+            {nav.teamLabel && (
+              <a href="#team" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+                {nav.teamLabel}
               </a>
             )}
             {nav.contactLabel && (
