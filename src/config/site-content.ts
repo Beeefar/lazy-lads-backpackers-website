@@ -359,6 +359,7 @@ export const siteContent = {
         slug: 'soft-opening-first-backpackers',
         title: 'Soft Opening: Lazy Lads Welcomes Its First Backpackers',
         date: '2025-02-01',
+        category: 'Hostel Life',
         excerpt:
           'After months of painting walls, building bunks, and testing the Wi-Fi, Lazy Lads quietly opened its doors to the very first guests.',
         content:
@@ -369,6 +370,7 @@ export const siteContent = {
         slug: 'welcome-to-lazy-lads-arrival-guide',
         title: 'Welcome to Pokhara: The Ultimate Lazy Lads Arrival Guide',
         date: '2025-02-12',
+        category: 'Travel Guide',
         excerpt: 'Everything you need to know about getting here, local ATMs, and making the most of your first 24 hours in Pokhara.',
         content: 
           'Namaste and welcome to the Lazy Lads family! We are stoked to have you stay with us. To make your arrival as smooth as a sunset boat ride on Phewa Lake, we’ve put together this quick guide.\n\n' +
@@ -389,6 +391,7 @@ export const siteContent = {
         slug: 'three-easy-weekend-treks',
         title: '3 Easy Treks You Can Do in Two Days or Less',
         date: '2025-01-15',
+        category: 'Adventure',
         excerpt:
           'Short on time but still want mountain views? These three beginner-friendly treks fit neatly between long travel days.',
         content:
@@ -399,6 +402,7 @@ export const siteContent = {
         slug: 'remote-work-from-a-hostel',
         title: 'How to Work Remotely from a Hostel Without Losing Your Mind',
         date: '2024-12-20',
+        category: 'Digital Nomad',
         excerpt:
           'Digital nomad or just answering a few emails on the road? Here is how to stay productive without missing the fun.',
         content:
@@ -424,7 +428,7 @@ export const siteContent = {
      * Your main WhatsApp number in international format, without "+".
      * Example: '9779812345678'
      */
-    whatsAppNumber: '9779817034846',
+    whatsAppNumber: '9779856057003',
     /** Default message used by the global floating WhatsApp button. */
     whatsAppMessageMain: 'Hi Lazy Lads! I have a question about staying with you.',
     /**
@@ -444,11 +448,11 @@ export const siteContent = {
     sectionTitle: 'Find Us',
     sectionSubtitle: 'We’re in the heart of Pokhara. Easy to reach by transit.',
     /** Full Google Maps embed URL (iframe src). Replace with your hostel location. */
-    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.998815018989!2d83.95919079000895!3d28.20734859112087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995950355bde455%3A0x3ff9df1fe0be3aee!2sParadise%20Mount%20Resort%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1770868838319!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d522.6551317853714!2d83.96337361009957!3d28.207599964913065!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595003e1649b5%3A0xbb61b8aed70ab2a6!2sLazy%20Lads%20Backpackers%20Hostel!5e0!3m2!1sen!2snp!4v1771840303495!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     /** Display address — update with your real address */
     address: 'Street No. 6, Pragati Marga, Lakeside, Pokhara 33700, Nepal',
     /** Optional: link that opens in Google Maps in a new tab */
-    googleMapsLink: 'https://maps.app.goo.gl/D8ReWEmKDz6t1LXx8',
+    googleMapsLink: 'https://maps.app.goo.gl/sbcjG1Sgghh8zV2V7',
   },
 
   /**
@@ -458,9 +462,9 @@ export const siteContent = {
     /** Short line under the logo */
     tagline: 'Relaxed but Premium.',
     /** Optional: email for contact (leave empty to hide) */
-    email: 'hello@lazyladshostel.com',
+    email: 'info@lazyladsbackpackers.com',
     /** Optional: phone (leave empty to hide) */
-    phone: '+977-9817034846',
+    phone: '+977-9856057003',
     /** Optional: copyright line. %year% will be replaced with current year. */
     copyright: '© %year% Lazy Lads Backpackers. All rights reserved.',
     /** Optional: link text for “Book Now” in footer */
