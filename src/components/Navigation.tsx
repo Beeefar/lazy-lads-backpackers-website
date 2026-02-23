@@ -5,6 +5,7 @@ import { siteContent } from '@/config/site-content';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 
 const { siteName, nav, CLOUDBEDS_URL, adventures } = siteContent;
 
@@ -16,15 +17,29 @@ export function Navigation() {
     <header className="sticky top-0 z-50 bg-secondary border-b border-accent">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="font-heading text-xl font-bold text-primary">
-          {siteName}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Image 
+              src="/images/icons/logo.png" 
+              alt={`${siteName} logo`}
+              width={40}
+              height={40}
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+              priority
+            />
+            <span className="font-heading text-lg sm:text-xl font-bold text-primary">
+              {siteName}
+            </span>
+          </div>
         </Link>
 
+        {/* ── Desktop menu ── */}
         <nav className="hidden items-center gap-6 md:flex">
           {nav.roomsLabel && (
-            <a href="#rooms" className="text-gray-600 hover:text-primary transition-colors">
+            <Link href="/#rooms" className="text-gray-600 hover:text-primary transition-colors">
               {nav.roomsLabel}
-            </a>
+            </Link>
           )}
+
           {nav.adventuresLabel && (
             <div className="relative">
               <button
@@ -49,6 +64,14 @@ export function Navigation() {
                     transition={{ duration: 0.18 }}
                     className="absolute right-0 mt-2 w-56 rounded-xl border border-accent bg-secondary py-2 shadow-lg"
                   >
+                    <Link
+                      href="/adventures"
+                      className="block px-4 py-2 text-sm font-semibold text-primary hover:bg-accent"
+                      onClick={() => setAdventuresOpen(false)}
+                    >
+                      All Adventures
+                    </Link>
+                    <div className="my-1 border-t border-accent" />
                     {adventures.items.map((item) => (
                       <Link
                         key={item.id}
@@ -64,21 +87,25 @@ export function Navigation() {
               </AnimatePresence>
             </div>
           )}
+
           {nav.galleryLabel && (
-            <a href="#gallery" className="text-gray-600 hover:text-primary transition-colors">
+            <Link href="/#gallery" className="text-gray-600 hover:text-primary transition-colors">
               {nav.galleryLabel}
-            </a>
+            </Link>
           )}
+
           {nav.teamLabel && (
-            <a href="#team" className="text-gray-600 hover:text-primary transition-colors">
+            <Link href="/#team" className="text-gray-600 hover:text-primary transition-colors">
               {nav.teamLabel}
-            </a>
+            </Link>
           )}
+
           {nav.contactLabel && (
-            <a href="#contact" className="text-gray-600 hover:text-primary transition-colors">
+            <Link href="/#contact" className="text-gray-600 hover:text-primary transition-colors">
               {nav.contactLabel}
-            </a>
+            </Link>
           )}
+
           <a
             href={CLOUDBEDS_URL}
             target="_blank"
@@ -89,6 +116,7 @@ export function Navigation() {
           </a>
         </nav>
 
+        {/* ── Mobile hamburger toggle ── */}
         <button
           type="button"
           className="flex p-2 text-primary md:hidden"
@@ -99,14 +127,20 @@ export function Navigation() {
         </button>
       </div>
 
+      {/* ── Mobile menu ── */}
       {open && (
         <div className="border-t border-accent bg-secondary px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">
             {nav.roomsLabel && (
-              <a href="#rooms" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+              <Link
+                href="/#rooms"
+                className="text-gray-600 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
                 {nav.roomsLabel}
-              </a>
+              </Link>
             )}
+
             {nav.adventuresLabel && (
               <div className="space-y-1">
                 <button
@@ -130,15 +164,19 @@ export function Navigation() {
                       transition={{ duration: 0.18 }}
                       className="ml-3 flex flex-col border-l border-accent pl-3 text-sm"
                     >
+                      <Link
+                        href="/adventures"
+                        className="py-1 font-semibold text-primary hover:text-primary/80"
+                        onClick={() => { setOpen(false); setAdventuresOpen(false); }}
+                      >
+                        All Adventures
+                      </Link>
                       {adventures.items.map((item) => (
                         <Link
                           key={item.id}
                           href={`/adventures/${item.slug}`}
                           className="py-1 text-gray-600 hover:text-primary"
-                          onClick={() => {
-                            setOpen(false);
-                            setAdventuresOpen(false);
-                          }}
+                          onClick={() => { setOpen(false); setAdventuresOpen(false); }}
                         >
                           {item.title}
                         </Link>
@@ -148,21 +186,37 @@ export function Navigation() {
                 </AnimatePresence>
               </div>
             )}
+
             {nav.galleryLabel && (
-              <a href="#gallery" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+              <Link
+                href="/#gallery"
+                className="text-gray-600 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
                 {nav.galleryLabel}
-              </a>
+              </Link>
             )}
+
             {nav.teamLabel && (
-              <a href="#team" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+              <Link
+                href="/#team"
+                className="text-gray-600 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
                 {nav.teamLabel}
-              </a>
+              </Link>
             )}
+
             {nav.contactLabel && (
-              <a href="#contact" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+              <Link
+                href="/#contact"
+                className="text-gray-600 hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
                 {nav.contactLabel}
-              </a>
+              </Link>
             )}
+
             <a
               href={CLOUDBEDS_URL}
               target="_blank"

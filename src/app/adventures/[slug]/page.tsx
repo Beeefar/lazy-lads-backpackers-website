@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { siteContent } from '@/config/site-content';
+import { AdventureCategoryBadge } from '@/components/Adventures';
 
 const adventures = siteContent.adventures.items;
 const contact = siteContent.contact;
+const { seo, siteName } = siteContent;
 
-type Params = {
-  slug: string;
-};
+type Params = { slug: string };
 
 export function generateStaticParams() {
   return adventures.map((adv) => ({ slug: adv.slug }));
@@ -18,14 +18,31 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const adventure = adventures.find((a) => a.slug === params.slug);
 
   if (!adventure) {
-    return {
-      title: 'Adventure not found | Lazy Lads',
-    };
+    return { title: `Adventure not found | ${siteName}` };
   }
 
+  // Use the adventure's own image for social sharing; fall back to seo.defaultImage
+  const ogImage = adventure.image.startsWith('http')
+    ? adventure.image
+    : `${seo.siteUrl}${adventure.image}`;
+
   return {
-    title: `${adventure.title} | Adventures | ${siteContent.siteName}`,
+    title: `${adventure.title} | Adventures | ${siteName}`,
     description: adventure.description,
+    keywords: `${adventure.title.toLowerCase()} pokhara, ${seo.keywords}`,
+    openGraph: {
+      title: `${adventure.title} | ${siteName}`,
+      description: adventure.description,
+      type: 'article',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: adventure.imageAlt }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: `@${seo.twitterHandle}`,
+      title: `${adventure.title} | ${siteName}`,
+      description: adventure.description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -39,7 +56,7 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
           <Breadcrumbs
             segments={[
               { label: 'Home', href: '/' },
-              { label: 'Adventures', href: '#adventures' },
+              { label: 'Adventures', href: '/#adventures' },
               { label: 'Not found' },
             ]}
           />
@@ -50,10 +67,7 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
   }
 
   const isExternal = adventure.image.startsWith('http');
-  const baseMessage = contact.whatsAppMessageAdventure.replace(
-    '[ADVENTURE]',
-    adventure.title,
-  );
+  const baseMessage = contact.whatsAppMessageAdventure.replace('[ADVENTURE]', adventure.title);
   const whatsAppHref = contact.whatsAppNumber
     ? `https://wa.me/${contact.whatsAppNumber}?text=${encodeURIComponent(baseMessage)}`
     : null;
@@ -64,12 +78,13 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
         <Breadcrumbs
           segments={[
             { label: 'Home', href: '/' },
-            { label: 'Adventures', href: '#adventures' },
+            { label: 'Adventures', href: '/#adventures' },
             { label: adventure.title },
           ]}
         />
 
         <div className="mt-6 overflow-hidden rounded-2xl border border-accent bg-white shadow-sm">
+          {/* Hero image */}
           <div className="relative h-64 sm:h-80">
             {isExternal ? (
               <Image
@@ -90,15 +105,22 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
               />
             )}
           </div>
+
           <div className="p-6 sm:p-8">
+            {/* ── Category badge — prominently displayed near the title ── */}
+            <div className="mb-3">
+              <AdventureCategoryBadge category={adventure.category} />
+            </div>
+
             <h1 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
               {adventure.title}
             </h1>
-            <p className="mt-3 text-gray-700">{adventure.description}</p>
+            <p className="mt-3 text-gray-700 font-medium">{adventure.description}</p>
             <p className="mt-5 text-sm leading-relaxed text-gray-700 whitespace-pre-line">
               {adventure.fullDescription}
             </p>
 
+            {/* Booking info box */}
             <section className="mt-8 rounded-xl bg-accent p-5">
               <h2 className="font-heading text-lg font-semibold text-primary">
                 How to book this adventure
@@ -130,6 +152,7 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
               )}
             </section>
 
+            {/* Back links */}
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/#adventures"
@@ -151,10 +174,7 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
   );
 }
 
-type Crumb = {
-  label: string;
-  href?: string;
-};
+type Crumb = { label: string; href?: string };
 
 function Breadcrumbs({ segments }: { segments: Crumb[] }) {
   return (
@@ -176,4 +196,3 @@ function Breadcrumbs({ segments }: { segments: Crumb[] }) {
     </nav>
   );
 }
-

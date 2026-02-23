@@ -18,16 +18,41 @@ const inter = Inter({
   display: 'swap',
 });
 
+const { seo, siteName } = siteContent;
+
 export const metadata: Metadata = {
-  title: siteContent.siteName,
-  description: siteContent.tagline,
+  metadataBase: new URL(seo.siteUrl),
+  title: {
+    default: seo.title,
+    template: `%s | ${siteName}`,
+  },
+  description: seo.description,
+  keywords: seo.keywords,
+  openGraph: {
+    title: seo.title,
+    description: seo.description,
+    type: 'website',
+    url: seo.siteUrl,
+    siteName,
+    images: [
+      {
+        url: seo.defaultImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteName} — Best Hostel in Pokhara`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: `@${seo.twitterHandle}`,
+    title: seo.title,
+    description: seo.description,
+    images: [seo.defaultImage],
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-secondary">

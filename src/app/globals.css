@@ -11,3 +11,6 @@
 body {
   @apply font-body text-gray-800 antialiased;
 }
+html {
+  scroll-behavior: smooth;
+}

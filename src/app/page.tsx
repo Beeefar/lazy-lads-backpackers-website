@@ -6,7 +6,7 @@ import { Gallery } from '@/components/Gallery';
 import { PlacesOfInterest } from '@/components/PlacesOfInterest';
 import { TeamSection } from '@/components/TeamSection';
 import { FaqSection } from '@/components/FaqSection';
-import { BlogPreview } from '@/components/BlogPreview';
+import { BlogPreview } from '../components/BlogPreview';
 import { MapSection } from '@/components/MapSection';
 
 export default function Home() {
