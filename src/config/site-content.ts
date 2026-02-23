@@ -101,7 +101,7 @@ export const siteContent = {
     sectionSubtitle: 'Spaces where you can work, relax, and connect.',
     images: [
       { id: 'g1', src: '/images/hostel/peacepagoda.webp', alt: 'Peace Pagoda' },
-      { id: 'g2', src: '/images/hostel/phewa-lake.webp', alt: 'Phewa Lake' },
+      { id: 'g2', src: '/images/hostel/phewa-lake.webp', alt: 'Phewa Lake in the evening' },
       { id: 'g3', src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80', alt: 'Cozy bunk' },
       { id: 'g4', src: '/images/adventure/rafting.webp', alt: 'Rafting' },
       { id: 'g5', src: '/images/hostel/park.webp', alt: 'Basundhara Park' },
