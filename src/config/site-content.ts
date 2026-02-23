@@ -119,12 +119,12 @@ export const siteContent = {
     images: [
       {
         id: 'g1',
-        src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+        src: '/images/hostel/peacepagoda.jpg',
         alt: 'Common area and lounge',
       },
       {
         id: 'g2',
-        src: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80',
+        src: '/images/hostel/phewa lake.jpg',
         alt: 'Dorm room',
       },
       {
@@ -134,17 +134,17 @@ export const siteContent = {
       },
       {
         id: 'g4',
-        src: 'https://images.unsplash.com/photo-1590490360182-c33f57733954?w=600&q=80',
+        src: '/images/adventure/rafting.jpg',
         alt: 'Private room',
       },
       {
         id: 'g5',
-        src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80',
+        src: '/images/hostel/park.jpg',
         alt: 'Hostel kitchen',
       },
       {
         id: 'g6',
-        src: 'https://images.unsplash.com/photo-1578681994506-b8f463449011?w=600&q=80',
+        src: '/images/hostel/lakeside.jpg',
         alt: 'Outdoor seating',
       },
     ],
@@ -169,7 +169,7 @@ export const siteContent = {
         fullDescription:
           'From easy sunrise hikes to multi-day ridge walks, trekking from Lazy Lads can be as mellow or as challenging as you like. We work with trusted local guides, help you rent or buy gear, and make sure you are well-briefed before you hit the trail.',
         image:
-          'https://images.unsplash.com/photo-1526481280695-3c687fd543c0?w=800&q=80',
+          '/images/adventure/treking.jpg',
         imageAlt: 'Backpackers trekking in the mountains',
       },
       {
@@ -181,7 +181,7 @@ export const siteContent = {
         fullDescription:
           'Take off from a nearby hill and glide over lakes, rooftops, and rice fields with licensed, insured tandem pilots. We can arrange morning or afternoon flights, handle transport to the take-off point, and share honest tips about weather and safety.',
         image:
-          'https://images.unsplash.com/photo-1534448311378-1e193fb2570e?w=800&q=80',
+          '/images/adventure/Paragliding.jpg',
         imageAlt: 'Paragliding above a lake and hills',
       },
       {
@@ -193,7 +193,7 @@ export const siteContent = {
         fullDescription:
           'Whether you want a relaxed float or proper rapids, we connect you with river operators who prioritise safety and fun. We can help you pick routes that match your comfort level and arrange same-day or next-day departures.',
         image:
-          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&q=80',
+          '/images/adventure/rafting.jpg',
         imageAlt: 'Group of people rafting on a river',
       },
     ],
@@ -234,27 +234,26 @@ export const siteContent = {
         role: 'Hostel Manager',
         bio: 'Keeps the vibes high and the operations smooth. Your go-to for anything you need on-site.',
         image:
-          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80',
+          '/images/hostel/azeem.jpg',
         imageAlt: 'Hostel manager smiling at the camera',
       },
       {
         id: 'samir',
         name: 'Samir',
-        role: 'Lead Adventure Guide',
-        bio: 'Knows every trail, sunrise spot, and hidden waterfall within driving distance.',
+        role: 'Front Desk and Guest Services',
+        bio: 'Handles check-ins/check-outs, bookings, and provides local travel information.',
         image:
-          'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=600&q=80',
-        imageAlt: 'Adventure guide with backpack in the mountains',
+          '/images/hostel/samir.jpg',
       },
       {
-        id: 'bidur',
-        name: 'Bidur',
+        id: 'Sahef',
+        name: 'Sahef',
         role: 'Community & Events',
         bio: 'Organises family dinners, bar nights, and city walks so you never feel like a stranger.',
         image:
-          'https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?w=600&q=80',
+          '/images/hostel/sahef.jpg',
         imageAlt: 'Team member chatting with guests in a common area',
-      },
+      }
     ],
   },
 
@@ -272,7 +271,7 @@ export const siteContent = {
         distance: '10–15 minutes walk',
         description: 'Iconic lakeside boardwalk and boat rides.',
         image:
-          'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80',
+          '/images/hostel/phewa lake.jpg',
         imageAlt: 'Colorful boats on a calm lake at sunset',
       },
       {
@@ -281,7 +280,7 @@ export const siteContent = {
         distance: '30–40 mins drive',
         description: 'Hilltop stupa with panoramic mountain views.',
         image:
-          'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80',
+          '/images/hostel/peacepagoda.jpg',
         imageAlt: 'White hilltop stupa overlooking mountains and valley',
       },
       {
@@ -290,7 +289,7 @@ export const siteContent = {
         distance: '10 minutes walk',
         description: 'Shops, cafés, bars, and gear rentals along the main backpacker strip.',
         image:
-          'https://images.unsplash.com/photo-1521664873436-6c48b74a8a19?w=800&q=80',
+          '/images/hostel/foottrack.jpg',
         imageAlt: 'Lively street lined with cafés and shops in the evening',
       },
       {
