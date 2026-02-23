@@ -244,7 +244,7 @@ export const siteContent = {
         bio: 'Handles check-ins/check-outs, bookings, and provides local travel information.',
         image:
           '/images/hostel/samir.jpg',
-          imageAlt: 'Hostel manager smiling at the camera',
+        imageAlt: 'Hostel manager smiling at the camera',
       },
       {
         id: 'Sahef',
