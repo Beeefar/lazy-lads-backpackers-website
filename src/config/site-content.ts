@@ -119,12 +119,12 @@ export const siteContent = {
     images: [
       {
         id: 'g1',
-        src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+        src: '/images/hostel/peacepagoda.jpg',
         alt: 'Common area and lounge',
       },
       {
         id: 'g2',
-        src: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80',
+        src: '/images/hostel/phewa lake.jpg',
         alt: 'Dorm room',
       },
       {
@@ -134,17 +134,17 @@ export const siteContent = {
       },
       {
         id: 'g4',
-        src: 'https://images.unsplash.com/photo-1590490360182-c33f57733954?w=600&q=80',
+        src: '/images/adventure/rafting.jpg',
         alt: 'Private room',
       },
       {
         id: 'g5',
-        src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80',
+        src: '/images/hostel/park.jpg',
         alt: 'Hostel kitchen',
       },
       {
         id: 'g6',
-        src: 'https://images.unsplash.com/photo-1578681994506-b8f463449011?w=600&q=80',
+        src: '/images/hostel/lakeside.jpg',
         alt: 'Outdoor seating',
       },
     ],
@@ -169,7 +169,7 @@ export const siteContent = {
         fullDescription:
           'From easy sunrise hikes to multi-day ridge walks, trekking from Lazy Lads can be as mellow or as challenging as you like. We work with trusted local guides, help you rent or buy gear, and make sure you are well-briefed before you hit the trail.',
         image:
-          'https://images.unsplash.com/photo-1526481280695-3c687fd543c0?w=800&q=80',
+          '/images/adventure/treking.jpg',
         imageAlt: 'Backpackers trekking in the mountains',
       },
       {
@@ -181,7 +181,7 @@ export const siteContent = {
         fullDescription:
           'Take off from a nearby hill and glide over lakes, rooftops, and rice fields with licensed, insured tandem pilots. We can arrange morning or afternoon flights, handle transport to the take-off point, and share honest tips about weather and safety.',
         image:
-          'https://images.unsplash.com/photo-1534448311378-1e193fb2570e?w=800&q=80',
+          '/images/adventure/Paragliding.jpg',
         imageAlt: 'Paragliding above a lake and hills',
       },
       {
@@ -193,7 +193,7 @@ export const siteContent = {
         fullDescription:
           'Whether you want a relaxed float or proper rapids, we connect you with river operators who prioritise safety and fun. We can help you pick routes that match your comfort level and arrange same-day or next-day departures.',
         image:
-          'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&q=80',
+          '/images/adventure/rafting.jpg',
         imageAlt: 'Group of people rafting on a river',
       },
     ],
@@ -234,27 +234,26 @@ export const siteContent = {
         role: 'Hostel Manager',
         bio: 'Keeps the vibes high and the operations smooth. Your go-to for anything you need on-site.',
         image:
-          'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80',
+          '/images/hostel/azeem.jpg',
         imageAlt: 'Hostel manager smiling at the camera',
       },
       {
         id: 'samir',
         name: 'Samir',
-        role: 'Lead Adventure Guide',
-        bio: 'Knows every trail, sunrise spot, and hidden waterfall within driving distance.',
+        role: 'Front Desk and Guest Services',
+        bio: 'Handles check-ins/check-outs, bookings, and provides local travel information.',
         image:
-          'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=600&q=80',
-        imageAlt: 'Adventure guide with backpack in the mountains',
+          '/images/hostel/samir.jpg',
       },
       {
-        id: 'bidur',
-        name: 'Bidur',
+        id: 'Sahef',
+        name: 'Sahef',
         role: 'Community & Events',
         bio: 'Organises family dinners, bar nights, and city walks so you never feel like a stranger.',
         image:
-          'https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?w=600&q=80',
+          '/images/hostel/sahef.jpg',
         imageAlt: 'Team member chatting with guests in a common area',
-      },
+      }
     ],
   },
 
@@ -272,7 +271,7 @@ export const siteContent = {
         distance: '10–15 minutes walk',
         description: 'Iconic lakeside boardwalk and boat rides.',
         image:
-          'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&q=80',
+          '/images/hostel/phewa lake.jpg',
         imageAlt: 'Colorful boats on a calm lake at sunset',
       },
       {
@@ -281,7 +280,7 @@ export const siteContent = {
         distance: '30–40 mins drive',
         description: 'Hilltop stupa with panoramic mountain views.',
         image:
-          'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80',
+          '/images/hostel/peacepagoda.jpg',
         imageAlt: 'White hilltop stupa overlooking mountains and valley',
       },
       {
@@ -290,7 +289,7 @@ export const siteContent = {
         distance: '10 minutes walk',
         description: 'Shops, cafés, bars, and gear rentals along the main backpacker strip.',
         image:
-          'https://images.unsplash.com/photo-1521664873436-6c48b74a8a19?w=800&q=80',
+          '/images/hostel/foottrack.jpg',
         imageAlt: 'Lively street lined with cafés and shops in the evening',
       },
       {
@@ -359,6 +358,7 @@ export const siteContent = {
         slug: 'soft-opening-first-backpackers',
         title: 'Soft Opening: Lazy Lads Welcomes Its First Backpackers',
         date: '2025-02-01',
+        category: 'Hostel Life',
         excerpt:
           'After months of painting walls, building bunks, and testing the Wi-Fi, Lazy Lads quietly opened its doors to the very first guests.',
         content:
@@ -369,6 +369,7 @@ export const siteContent = {
         slug: 'welcome-to-lazy-lads-arrival-guide',
         title: 'Welcome to Pokhara: The Ultimate Lazy Lads Arrival Guide',
         date: '2025-02-12',
+        category: 'Travel Guide',
         excerpt: 'Everything you need to know about getting here, local ATMs, and making the most of your first 24 hours in Pokhara.',
         content: 
           'Namaste and welcome to the Lazy Lads family! We are stoked to have you stay with us. To make your arrival as smooth as a sunset boat ride on Phewa Lake, we’ve put together this quick guide.\n\n' +
@@ -389,6 +390,7 @@ export const siteContent = {
         slug: 'three-easy-weekend-treks',
         title: '3 Easy Treks You Can Do in Two Days or Less',
         date: '2025-01-15',
+        category: 'Adventure',
         excerpt:
           'Short on time but still want mountain views? These three beginner-friendly treks fit neatly between long travel days.',
         content:
@@ -399,6 +401,7 @@ export const siteContent = {
         slug: 'remote-work-from-a-hostel',
         title: 'How to Work Remotely from a Hostel Without Losing Your Mind',
         date: '2024-12-20',
+        category: 'Digital Nomad',
         excerpt:
           'Digital nomad or just answering a few emails on the road? Here is how to stay productive without missing the fun.',
         content:
@@ -424,7 +427,7 @@ export const siteContent = {
      * Your main WhatsApp number in international format, without "+".
      * Example: '9779812345678'
      */
-    whatsAppNumber: '9779817034846',
+    whatsAppNumber: '9779856057003',
     /** Default message used by the global floating WhatsApp button. */
     whatsAppMessageMain: 'Hi Lazy Lads! I have a question about staying with you.',
     /**
@@ -444,11 +447,11 @@ export const siteContent = {
     sectionTitle: 'Find Us',
     sectionSubtitle: 'We’re in the heart of Pokhara. Easy to reach by transit.',
     /** Full Google Maps embed URL (iframe src). Replace with your hostel location. */
-    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.998815018989!2d83.95919079000895!3d28.20734859112087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995950355bde455%3A0x3ff9df1fe0be3aee!2sParadise%20Mount%20Resort%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1770868838319!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d522.6551317853714!2d83.96337361009957!3d28.207599964913065!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595003e1649b5%3A0xbb61b8aed70ab2a6!2sLazy%20Lads%20Backpackers%20Hostel!5e0!3m2!1sen!2snp!4v1771840303495!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade',
     /** Display address — update with your real address */
     address: 'Street No. 6, Pragati Marga, Lakeside, Pokhara 33700, Nepal',
     /** Optional: link that opens in Google Maps in a new tab */
-    googleMapsLink: 'https://maps.app.goo.gl/D8ReWEmKDz6t1LXx8',
+    googleMapsLink: 'https://maps.app.goo.gl/sbcjG1Sgghh8zV2V7',
   },
 
   /**
@@ -458,9 +461,9 @@ export const siteContent = {
     /** Short line under the logo */
     tagline: 'Relaxed but Premium.',
     /** Optional: email for contact (leave empty to hide) */
-    email: 'hello@lazyladshostel.com',
+    email: 'info@lazyladsbackpackers.com',
     /** Optional: phone (leave empty to hide) */
-    phone: '+977-9817034846',
+    phone: '+977-9856057003',
     /** Optional: copyright line. %year% will be replaced with current year. */
     copyright: '© %year% Lazy Lads Backpackers. All rights reserved.',
     /** Optional: link text for “Book Now” in footer */
