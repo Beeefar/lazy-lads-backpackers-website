@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   },
   description: seo.description,
   keywords: seo.keywords,
+  icons: {
+    icon: '/images/favicon.ico',
+    shortcut: '/images/favicon.ico',
+    apple: '/images/favicon.ico', // This helps on iPhones
+  },
   openGraph: {
     title: seo.title,
     description: seo.description,
