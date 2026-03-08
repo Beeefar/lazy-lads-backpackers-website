@@ -341,6 +341,8 @@ export const siteContent = {
         title: 'Soft Opening: Lazy Lads Welcomes Its First Backpackers',
         date: '2025-02-01',
         category: 'Hostel Life',
+        image: '/images/hostel/banner.webp',
+        imageAlt: 'Lazy Lads hostel common area during soft opening',
         excerpt:
           'After months of painting walls, building bunks, and testing the Wi-Fi, Lazy Lads quietly opened its doors to the very first guests.',
         content:
@@ -352,6 +354,8 @@ export const siteContent = {
         title: 'Welcome to Pokhara: The Ultimate Lazy Lads Arrival Guide',
         date: '2025-02-12',
         category: 'Travel Guide',
+        image: '/images/hostel/phewa-lake.webp',
+        imageAlt: 'Phewa Lake at sunset in Pokhara',
         excerpt:
           'Everything you need to know about getting here, local ATMs, and making the most of your first 24 hours in Pokhara.',
         content:
@@ -363,6 +367,8 @@ export const siteContent = {
         title: '3 Easy Treks You Can Do in Two Days or Less',
         date: '2025-01-15',
         category: 'Adventure',
+        image: '/images/adventure/trekingMardi.webp',
+        imageAlt: 'Trekkers on a mountain trail near Pokhara',
         excerpt:
           'Short on time but still want mountain views? These three beginner-friendly treks fit neatly between long travel days.',
         content:
@@ -374,6 +380,8 @@ export const siteContent = {
         title: 'How to Work Remotely from a Hostel Without Losing Your Mind',
         date: '2024-12-20',
         category: 'Digital Nomad',
+        image: '/images/hostel/lakeside.webp',
+        imageAlt: 'Lakeside Pokhara — perfect for digital nomads',
         excerpt:
           'Digital nomad or just answering a few emails on the road? Here is how to stay productive without missing the fun.',
         content:
