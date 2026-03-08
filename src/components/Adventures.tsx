@@ -10,8 +10,6 @@ const { adventures } = siteContent;
 
 type AdventureCategory = 'Multi-Day' | 'Half-Day' | 'Adrenaline';
 
-// ─── Category config ─────────────────────────────────────────────────────────
-// Add a new category to this map and badges update everywhere automatically.
 const CATEGORY_CONFIG: Record<
   AdventureCategory,
   { Icon: React.ElementType; className: string }
@@ -30,25 +28,18 @@ const CATEGORY_CONFIG: Record<
   },
 };
 
-/**
- * Reusable adventure category badge.
- * Exported so /adventures/[slug]/page.tsx can reuse it without duplication.
- */
 export function AdventureCategoryBadge({ category }: { category: AdventureCategory }) {
   const config = CATEGORY_CONFIG[category];
   if (!config) return null;
   const { Icon, className } = config;
   return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold tracking-wide ${className}`}
-    >
+    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold tracking-wide ${className}`}>
       <Icon size={12} strokeWidth={2.5} />
       {category}
     </span>
   );
 }
 
-// Show only first 4 adventures on homepage — the rest live at /adventures
 const HOMEPAGE_LIMIT = 4;
 const previewItems = adventures.items.slice(0, HOMEPAGE_LIMIT);
 
@@ -56,7 +47,6 @@ export function Adventures() {
   return (
     <section id="adventures" className="bg-accent py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        {/* Section header */}
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -72,19 +62,8 @@ export function Adventures() {
           </p>
         </motion.div>
 
-        {/*
-          ── Cards ──────────────────────────────────────────────────────────
-          Mobile: horizontal scroll carousel (no wrapping, finger-swipeable)
-          Tablet+: 2-col grid
-          Desktop: 4-col grid (matches HOMEPAGE_LIMIT)
-        */}
         <div
-          className="
-            mt-10
-            flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory
-            sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 sm:snap-none
-            lg:grid-cols-4
-          "
+          className="mt-10 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 sm:snap-none lg:grid-cols-4"
           style={{ scrollbarWidth: 'none' }}
         >
           {previewItems.map((item, index) => {
@@ -93,43 +72,27 @@ export function Adventures() {
             return (
               <motion.article
                 key={item.id}
-                className="
-                  flex-shrink-0 w-72 snap-start
-                  flex flex-col overflow-hidden rounded-2xl border border-accent bg-secondary shadow-sm hover:shadow-md transition-shadow
-                  sm:w-auto sm:flex-shrink
-                "
+                className="group flex-shrink-0 w-72 snap-start flex flex-col overflow-hidden rounded-2xl border border-accent bg-secondary shadow-sm hover:shadow-md transition-shadow sm:w-auto sm:flex-shrink"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.06 }}
               >
-                {/* Image */}
-                <div className="relative h-48 flex-shrink-0">
-                  {isExternal ? (
-                    <Image
-                      src={item.image}
-                      alt={altText}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 288px, (max-width: 1024px) 50vw, 25vw"
-                      unoptimized={item.image.startsWith('https://images.unsplash.com')}
-                    />
-                  ) : (
-                    <Image
-                      src={item.image}
-                      alt={altText}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 288px, (max-width: 1024px) 50vw, 25vw"
-                    />
-                  )}
-                  {/* Floating category badge */}
-                  <div className="absolute top-3 left-3">
+                {/* Image Container with overflow-hidden */}
+                <div className="relative h-48 flex-shrink-0 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={altText}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 640px) 288px, (max-width: 1024px) 50vw, 25vw"
+                    unoptimized={isExternal && item.image.startsWith('https://images.unsplash.com')}
+                  />
+                  <div className="absolute top-3 left-3 z-10">
                     <AdventureCategoryBadge category={item.category as AdventureCategory} />
                   </div>
                 </div>
 
-                {/* Body */}
                 <div className="flex flex-1 flex-col p-4">
                   <h3 className="font-heading text-base font-bold text-primary">{item.title}</h3>
                   <p className="mt-1.5 text-xs text-gray-600 flex-1 line-clamp-3">
@@ -147,12 +110,10 @@ export function Adventures() {
           })}
         </div>
 
-        {/* Scroll hint on mobile */}
         <p className="mt-3 text-center text-xs text-gray-400 sm:hidden">
           ← Swipe to see more →
         </p>
 
-        {/* "View All Adventures" CTA */}
         <motion.div
           className="mt-10 flex justify-center"
           initial={{ opacity: 0, y: 12 }}
