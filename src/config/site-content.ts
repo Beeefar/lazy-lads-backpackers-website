@@ -70,7 +70,7 @@ export const siteContent = {
         currency: 'USD',
         image: '/images/hostel/mixed-dorm.webp',
         imageAlt: 'Mixed dorm room at Lazy Lads',
-        features: ['AC', 'Locker', 'Wi-Fi'],
+        features: ['Locker', 'Wi-Fi'],
       },
       {
         id: 'female-dorm',
@@ -80,7 +80,7 @@ export const siteContent = {
         currency: 'USD',
         image: '/images/hostel/female-dorm.webp',
         imageAlt: 'Female dorm at Lazy Lads',
-        features: ['AC', 'Locker', 'Wi-Fi'],
+        features: ['Locker', 'Wi-Fi'],
       },
       {
         id: 'private-room',
@@ -90,7 +90,7 @@ export const siteContent = {
         currency: 'USD',
         image: '/images/hostel/private-room.webp',
         imageAlt: 'Private room at Lazy Lads',
-        features: ['AC', 'Wi-Fi', 'Private Bath'],
+        features: ['Wi-Fi', 'Private Bath'],
       },
     ],
   },
