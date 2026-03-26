@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteContent } from '@/config/site-content';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
+import { BookingModal } from '@/components/BookingModal';
 
-const { siteName, nav, CLOUDBEDS_URL, adventures } = siteContent;
+const { siteName, nav, adventures } = siteContent;
 
 export function Navigation() {
   const [open, setOpen] = useState(false);
@@ -16,23 +17,23 @@ export function Navigation() {
   return (
     <header className="sticky top-0 z-50 bg-secondary border-b border-accent">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="font-heading text-xl font-bold text-primary">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <Image 
-              src="/images/icons/logo.png" 
-              alt={`${siteName} logo`}
-              width={40}
-              height={40}
-              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
-              priority
-            />
-            <span className="font-heading text-lg sm:text-xl font-bold text-primary">
-              {siteName}
-            </span>
-          </div>
+
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 sm:gap-3">
+          <Image
+            src="/images/icons/logo.png"
+            alt={`${siteName} logo`}
+            width={40}
+            height={40}
+            className="h-8 w-8 sm:h-10 sm:w-10 object-contain"
+            priority
+          />
+          <span className="font-heading text-lg sm:text-xl font-bold text-primary">
+            {siteName}
+          </span>
         </Link>
 
-        {/* ── Desktop menu ── */}
+        {/* Desktop menu */}
         <nav className="hidden items-center gap-6 md:flex">
           {nav.roomsLabel && (
             <Link href="/#rooms" className="text-gray-600 hover:text-primary transition-colors">
@@ -50,10 +51,7 @@ export function Navigation() {
                 aria-expanded={adventuresOpen}
               >
                 <span>{nav.adventuresLabel}</span>
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform ${adventuresOpen ? 'rotate-180' : ''}`}
-                />
+                <ChevronDown size={16} className={`transition-transform ${adventuresOpen ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
                 {adventuresOpen && (
@@ -64,21 +62,12 @@ export function Navigation() {
                     transition={{ duration: 0.18 }}
                     className="absolute right-0 mt-2 w-56 rounded-xl border border-accent bg-secondary py-2 shadow-lg"
                   >
-                    <Link
-                      href="/adventures"
-                      className="block px-4 py-2 text-sm font-semibold text-primary hover:bg-accent"
-                      onClick={() => setAdventuresOpen(false)}
-                    >
+                    <Link href="/adventures" className="block px-4 py-2 text-sm font-semibold text-primary hover:bg-accent" onClick={() => setAdventuresOpen(false)}>
                       All Adventures
                     </Link>
                     <div className="my-1 border-t border-accent" />
                     {adventures.items.map((item) => (
-                      <Link
-                        key={item.id}
-                        href={`/adventures/${item.slug}`}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-accent hover:text-primary"
-                        onClick={() => setAdventuresOpen(false)}
-                      >
+                      <Link key={item.id} href={`/adventures/${item.slug}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-accent hover:text-primary" onClick={() => setAdventuresOpen(false)}>
                         {item.title}
                       </Link>
                     ))}
@@ -89,34 +78,22 @@ export function Navigation() {
           )}
 
           {nav.galleryLabel && (
-            <Link href="/#gallery" className="text-gray-600 hover:text-primary transition-colors">
-              {nav.galleryLabel}
-            </Link>
+            <Link href="/#gallery" className="text-gray-600 hover:text-primary transition-colors">{nav.galleryLabel}</Link>
           )}
-
           {nav.teamLabel && (
-            <Link href="/#team" className="text-gray-600 hover:text-primary transition-colors">
-              {nav.teamLabel}
-            </Link>
+            <Link href="/#team" className="text-gray-600 hover:text-primary transition-colors">{nav.teamLabel}</Link>
           )}
-
           {nav.contactLabel && (
-            <Link href="/#contact" className="text-gray-600 hover:text-primary transition-colors">
-              {nav.contactLabel}
-            </Link>
+            <Link href="/#contact" className="text-gray-600 hover:text-primary transition-colors">{nav.contactLabel}</Link>
           )}
 
-          <a
-            href={CLOUDBEDS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <BookingModal
+            label={nav.bookNowLabel}
             className="rounded-lg bg-primary px-5 py-2.5 font-heading font-semibold text-secondary shadow-md hover:bg-primary/90 transition-colors"
-          >
-            {nav.bookNowLabel}
-          </a>
+          />
         </nav>
 
-        {/* ── Mobile hamburger toggle ── */}
+        {/* Mobile hamburger */}
         <button
           type="button"
           className="flex p-2 text-primary md:hidden"
@@ -127,18 +104,12 @@ export function Navigation() {
         </button>
       </div>
 
-      {/* ── Mobile menu ── */}
+      {/* Mobile menu */}
       {open && (
         <div className="border-t border-accent bg-secondary px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">
             {nav.roomsLabel && (
-              <Link
-                href="/#rooms"
-                className="text-gray-600 hover:text-primary"
-                onClick={() => setOpen(false)}
-              >
-                {nav.roomsLabel}
-              </Link>
+              <Link href="/#rooms" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>{nav.roomsLabel}</Link>
             )}
 
             {nav.adventuresLabel && (
@@ -150,10 +121,7 @@ export function Navigation() {
                   aria-expanded={adventuresOpen}
                 >
                   <span>{nav.adventuresLabel}</span>
-                  <ChevronDown
-                    size={18}
-                    className={`transition-transform ${adventuresOpen ? 'rotate-180' : ''}`}
-                  />
+                  <ChevronDown size={18} className={`transition-transform ${adventuresOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <AnimatePresence initial={false}>
                   {adventuresOpen && (
@@ -164,20 +132,9 @@ export function Navigation() {
                       transition={{ duration: 0.18 }}
                       className="ml-3 flex flex-col border-l border-accent pl-3 text-sm"
                     >
-                      <Link
-                        href="/adventures"
-                        className="py-1 font-semibold text-primary hover:text-primary/80"
-                        onClick={() => { setOpen(false); setAdventuresOpen(false); }}
-                      >
-                        All Adventures
-                      </Link>
+                      <Link href="/adventures" className="py-1 font-semibold text-primary" onClick={() => { setOpen(false); setAdventuresOpen(false); }}>All Adventures</Link>
                       {adventures.items.map((item) => (
-                        <Link
-                          key={item.id}
-                          href={`/adventures/${item.slug}`}
-                          className="py-1 text-gray-600 hover:text-primary"
-                          onClick={() => { setOpen(false); setAdventuresOpen(false); }}
-                        >
+                        <Link key={item.id} href={`/adventures/${item.slug}`} className="py-1 text-gray-600 hover:text-primary" onClick={() => { setOpen(false); setAdventuresOpen(false); }}>
                           {item.title}
                         </Link>
                       ))}
@@ -187,44 +144,14 @@ export function Navigation() {
               </div>
             )}
 
-            {nav.galleryLabel && (
-              <Link
-                href="/#gallery"
-                className="text-gray-600 hover:text-primary"
-                onClick={() => setOpen(false)}
-              >
-                {nav.galleryLabel}
-              </Link>
-            )}
+            {nav.galleryLabel && <Link href="/#gallery" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>{nav.galleryLabel}</Link>}
+            {nav.teamLabel && <Link href="/#team" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>{nav.teamLabel}</Link>}
+            {nav.contactLabel && <Link href="/#contact" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>{nav.contactLabel}</Link>}
 
-            {nav.teamLabel && (
-              <Link
-                href="/#team"
-                className="text-gray-600 hover:text-primary"
-                onClick={() => setOpen(false)}
-              >
-                {nav.teamLabel}
-              </Link>
-            )}
-
-            {nav.contactLabel && (
-              <Link
-                href="/#contact"
-                className="text-gray-600 hover:text-primary"
-                onClick={() => setOpen(false)}
-              >
-                {nav.contactLabel}
-              </Link>
-            )}
-
-            <a
-              href={CLOUDBEDS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-primary px-5 py-3 font-heading font-semibold text-secondary text-center"
-            >
-              {nav.bookNowLabel}
-            </a>
+            <BookingModal
+              label={nav.bookNowLabel}
+              className="w-full rounded-lg bg-primary px-5 py-3 font-heading font-semibold text-secondary text-center"
+            />
           </div>
         </div>
       )}
