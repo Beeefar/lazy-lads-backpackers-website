@@ -50,9 +50,9 @@ export const siteContent = {
 
   /** HERO SECTION */
   hero: {
-    headline: 'High-Speed Wi-Fi, Social Vibes, Prime Location',
+    headline: 'Escape the Ordinary Discover the Garden of Lazy Lads',
     subheadline:
-      'Kick back at Lazy Lads — where comfort meets community. Perfect for digital nomads and backpackers.',
+      'A boutique backpacker experience tucked away in the greenery. High-speed Wi-Fi for the hustle, lush gardens for the chill, and the best tribe in Nepal. 🌿 Lush Garden Social | ☕ On-site Bar & Cafe | 🏔️ Expert Trekking Advice | 👩‍💻 Nomad Friendly | 🍺 Social Backyard',
     image: '/images/hostel/banner.webp',
     imageAlt: 'Relaxed common area at Lazy Lads Backpackers Hostel',
   },
@@ -412,8 +412,19 @@ export const siteContent = {
     tagline: 'Relaxed but Premium.',
     email: 'info@lazyladsbackpackers.com',
     phone: '+977-9856057003',
-    copyright: '© %year% Lazy Lads Backpackers. All rights reserved.',
+    /** Alternative / WhatsApp-only number */
+    phone2: '+977-976-3253583',          // ← update with the real second number
     bookNowLabel: 'Book Now',
+    copyright: '© %year% Lazy Lads Backpackers. All rights reserved.',
+
+    /** Social & review links — set to '' to hide any item */
+    social: {
+      instagram: 'https://www.instagram.com/lazyladsbackpackers/',   // ← update
+      tiktok:    'https://www.tiktok.com/@lazyladsbackpackers',     // ← update
+      facebook:  'https://www.facebook.com/profile.php?id=61583739389033',    // ← update
+      /** Google Maps / Google Review URL */
+      googleReview: 'https://g.page/r/CaayCteuuGG7EBM/review', // ← update to review link
+    },
   },
 } as const;
 
