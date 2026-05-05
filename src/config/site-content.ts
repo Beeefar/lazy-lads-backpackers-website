@@ -15,7 +15,7 @@ export const siteContent = {
   /**
    * CLOUDBEDS BOOKING ENGINE URL
    */
-  CLOUDBEDS_URL: 'https://lazylads.cloudbeds.com/reservations',
+  CLOUDBEDS_URL: 'https://www.booking.com/hotel/np/lazy-lads-backpackers-hostel.html?aid=2336990&label=en-np-booking-desktop-Hxoa%2A5%2AsEjvRLkSf5HUebQS652804038665%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-46257546822%3Alp9070019%3Ali%3Adec%3Adm&sid=01ff068bbef1532e6204ad8025ae3110&all_sr_blocks=1597129612_430830392_2_1_0&checkin=2026-03-16&checkout=2026-03-17&dest_id=15971296&dest_type=hotel&dist=0&group_adults=2&group_children=0&hapos=1&highlighted_blocks=1597129612_430830392_2_1_0&hpos=1&matching_block_id=1597129612_430830392_2_1_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1597129612_430830392_2_1_0__1350&srepoch=1773630326&srpvid=4cfa12d931a4009d&type=total&ucfs=1&',
 
   /**
    * GLOBAL SEO / METADATA
@@ -67,30 +67,30 @@ export const siteContent = {
         name: 'Mixed Dorms',
         description: 'Social dorms with lockers, AC, and high-speed Wi-Fi. Meet fellow travellers.',
         priceFrom: 6.77,
-        currency: 'USD',
+        currency: 'NPR',
         image: '/images/hostel/mixed-dorm.webp',
         imageAlt: 'Mixed dorm room at Lazy Lads',
-        features: ['AC', 'Locker', 'Wi-Fi'],
+        features: ['Locker', 'Wi-Fi'],
       },
       {
         id: 'female-dorm',
         name: 'Female Dorms',
         description: 'Female-only dorms for a comfortable, safe stay. Same great amenities.',
         priceFrom: 7.44,
-        currency: 'USD',
+        currency: 'NPR',
         image: '/images/hostel/female-dorm.webp',
         imageAlt: 'Female dorm at Lazy Lads',
-        features: ['AC', 'Locker', 'Wi-Fi'],
+        features: ['Locker', 'Wi-Fi'],
       },
       {
         id: 'private-room',
         name: 'Private Rooms',
         description: 'Your own space with double bed, AC, and Wi-Fi. Privacy when you need it.',
         priceFrom: 17,
-        currency: 'USD',
+        currency: 'NPR',
         image: '/images/hostel/private-room.webp',
         imageAlt: 'Private room at Lazy Lads',
-        features: ['AC', 'Wi-Fi', 'Private Bath'],
+        features: ['Wi-Fi', 'Private Bath'],
       },
     ],
   },
