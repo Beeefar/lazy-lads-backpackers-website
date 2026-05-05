@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { siteContent } from '@/config/site-content';
+import { BookingModal } from '@/components/BookingModal';
 import { motion } from 'framer-motion';
 
 const { hero, CLOUDBEDS_URL } = siteContent;
@@ -57,14 +58,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <a
-            href={CLOUDBEDS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          
+          <BookingModal 
+            label="Book Now" 
             className="mt-8 inline-block rounded-lg bg-secondary px-8 py-4 font-heading text-lg font-semibold text-primary shadow-lg hover:bg-white/95 transition-colors"
-          >
-            Book Now
-          </a>
+          />
+          
         </motion.div>
       </div>
     </section>

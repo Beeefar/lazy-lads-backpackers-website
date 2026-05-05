@@ -36,7 +36,8 @@ export function Navigation() {
         {/* Desktop menu */}
         <nav className="hidden items-center gap-6 md:flex">
           {nav.roomsLabel && (
-            <Link href="/#rooms" className="text-gray-600 hover:text-primary transition-colors">
+            // ✅ Changed from /#rooms → /rooms (dedicated page)
+            <Link href="/rooms" className="text-gray-600 hover:text-primary transition-colors">
               {nav.roomsLabel}
             </Link>
           )}
@@ -109,7 +110,10 @@ export function Navigation() {
         <div className="border-t border-accent bg-secondary px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3">
             {nav.roomsLabel && (
-              <Link href="/#rooms" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>{nav.roomsLabel}</Link>
+              // ✅ Changed from /#rooms → /rooms (mobile too)
+              <Link href="/rooms" className="text-gray-600 hover:text-primary" onClick={() => setOpen(false)}>
+                {nav.roomsLabel}
+              </Link>
             )}
 
             {nav.adventuresLabel && (
