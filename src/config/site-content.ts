@@ -22,20 +22,40 @@ export const siteContent = {
    * Used across all pages for Open Graph, Twitter cards, and search engine discovery.
    */
   seo: {
-    /** Optimised page title for the homepage */
     title: 'Lazy Lads Backpackers Hostel | Best Hostel in Pokhara',
-    /** Meta description (155 chars max for best results in search results) */
     description:
-      'Relaxed but premium hostel in Lakeside Pokhara. High-speed Wi-Fi, social vibes, and trekking adventures for digital nomads.',
-    /** Your live domain — used to build canonical URLs and OG image paths */
+      'Lazy Lads Backpackers Hostel in Lakeside Pokhara, Nepal — high-speed Wi-Fi, social dorms & private rooms, bar, and trekking adventures. Relaxed but premium.',
     siteUrl: 'https://lazyladsbackpackers.com',
-    /** Target keywords for on-page SEO */
     keywords:
-      'hostel pokhara, backpackers nepal, digital nomad pokhara, lazy lads hostel',
-    /** Path to a high-quality hero image used as the default social-share image */
-    defaultImage: '/images/hostel/phewa-lake.webp',
-    /** Twitter / X handle (without @) */
+      'lazyladsbackpackers hostel, lazy lads backpackers hostel, lazy lads hostel, backpackers hostel pokhara, hostel in pokhara, budget hostel pokhara, lakeside hostel pokhara, best hostel in pokhara nepal, digital nomad hostel pokhara, backpacker hostel nepal, hostel near lakeside pokhara, pokhara hostel, hostel pokhara nepal, cheap hostel pokhara, lazy lads backpackers, lazy lads pokhara, hostel with wifi pokhara, social hostel pokhara, pokhara backpackers, backpackers nepal',
+    defaultImage: '/images/hostel/banner.webp',
     twitterHandle: 'lazyladspokhara',
+  },
+
+  /**
+   * HOTEL STRUCTURED DATA
+   * Used to build JSON-LD (schema.org) rich results — LocalBusiness/Hotel,
+   * FAQPage, BreadcrumbList. Keep in sync with `map`, `contact` and `faqs`.
+   */
+  hotel: {
+    legalName: 'Lazy Lads Backpackers Hostel',
+    alternateName: 'Lazy Lads',
+    type: 'Hostel',
+    currenciesAccepted: 'NPR',
+    priceRange: '$$',
+    checkinTime: '14:00',
+    checkoutTime: '11:00',
+    ratingValue: 4.8,
+    reviewCount: 40,
+    mapsUrl: 'https://maps.app.goo.gl/sbcjG1Sgghh8zV2V7',
+    latitude: 28.207599964913065,
+    longitude: 83.96337361009957,
+    sameAs: [
+      'https://www.instagram.com/lazyladsbackpackers/',
+      'https://www.tiktok.com/@lazyladsbackpackers',
+      'https://www.facebook.com/profile.php?id=61583739389033',
+      'https://g.page/r/CaayCteuuGG7EBM/review',
+    ],
   },
 
   /** Navigation */
@@ -50,7 +70,7 @@ export const siteContent = {
 
   /** HERO SECTION */
   hero: {
-    headline: 'Escape the Ordinary Discover the Garden of Lazy Lads',
+    headline: 'Lazy Lads Backpackers Hostel — Escape the Ordinary',
     subheadline:
       'A boutique backpacker experience tucked away in the greenery. High-speed Wi-Fi for the hustle, lush gardens for the chill, and the best tribe in Nepal. 🌿 Lush Garden Social | ☕ On-site Bar & Cafe | 🏔️ Expert Trekking Advice | 👩‍💻 Nomad Friendly | 🍺 Social Backyard',
     image: '/images/hostel/banner.webp',

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd } from '@/components/JsonLd';
 import { siteContent } from '@/config/site-content';
 
 const posts = siteContent.blog.posts;
-const { seo, siteName } = siteContent;
+const { seo, siteName, hotel } = siteContent;
 
 type Params = { slug: string };
 
@@ -18,17 +19,23 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
     return { title: `Post not found | ${siteName}` };
   }
 
-  const ogImage = `${seo.siteUrl}${seo.defaultImage}`;
+  const pageUrl = `${seo.siteUrl}/blog/${post.slug}`;
+  const ogImage = post.image.startsWith('http')
+    ? post.image
+    : `${seo.siteUrl}${post.image}`;
 
   return {
     title: `${post.title} | ${siteName}`,
     description: post.excerpt,
     keywords: `${post.category.toLowerCase()}, ${seo.keywords}`,
+    alternates: { canonical: pageUrl },
     openGraph: {
       title: `${post.title} | ${siteName}`,
       description: post.excerpt,
       type: 'article',
+      url: pageUrl,
       publishedTime: post.date,
+      authors: [hotel.legalName],
       tags: [post.category],
       images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
@@ -85,8 +92,49 @@ export default function BlogPostPage({ params }: { params: Params }) {
     day: 'numeric',
   });
 
+  const pageUrl = `${seo.siteUrl}/blog/${post.slug}`;
+  const postImage = post.image.startsWith('http')
+    ? post.image
+    : `${seo.siteUrl}${post.image}`;
+
+  const blogPostingJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${pageUrl}#article`,
+    headline: post.title,
+    description: post.excerpt,
+    image: postImage,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Organization',
+      name: hotel.legalName,
+      url: seo.siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: hotel.legalName,
+      url: seo.siteUrl,
+      logo: { '@type': 'ImageObject', url: `${seo.siteUrl}/images/icons/logo.png` },
+    },
+    mainEntityOfPage: pageUrl,
+    inLanguage: 'en',
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: seo.siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${seo.siteUrl}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: pageUrl },
+    ],
+  };
+
   return (
     <main className="bg-secondary pb-16 pt-10 sm:pb-24 sm:pt-16">
+      <JsonLd data={blogPostingJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <Breadcrumbs
           segments={[

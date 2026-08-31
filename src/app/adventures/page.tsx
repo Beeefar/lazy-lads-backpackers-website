@@ -68,7 +68,7 @@ export default function AdventureArchivePage() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="font-heading text-4xl font-bold text-primary sm:text-5xl">
-            Choose Your Adventure
+            Adventures in Pokhara from Lazy Lads
           </h1>
           <p className="mt-3 text-lg text-gray-500 max-w-xl mx-auto">
             {adventures.sectionSubtitle}

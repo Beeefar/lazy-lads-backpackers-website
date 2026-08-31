@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { JsonLd } from '@/components/JsonLd';
 import { siteContent } from '@/config/site-content';
 import { AdventureCategoryBadge } from '@/components/Adventures';
 
 const adventures = siteContent.adventures.items;
 const contact = siteContent.contact;
-const { seo, siteName } = siteContent;
+const { seo, siteName, hotel } = siteContent;
 
 type Params = { slug: string };
 
@@ -25,15 +26,18 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const ogImage = adventure.image.startsWith('http')
     ? adventure.image
     : `${seo.siteUrl}${adventure.image}`;
+  const pageUrl = `${seo.siteUrl}/adventures/${adventure.slug}`;
 
   return {
-    title: `${adventure.title} | Adventures | ${siteName}`,
+    title: `${adventure.title} in Pokhara | ${siteName}`,
     description: adventure.description,
     keywords: `${adventure.title.toLowerCase()} pokhara, ${seo.keywords}`,
+    alternates: { canonical: pageUrl },
     openGraph: {
       title: `${adventure.title} | ${siteName}`,
       description: adventure.description,
       type: 'article',
+      url: pageUrl,
       images: [{ url: ogImage, width: 1200, height: 630, alt: adventure.imageAlt }],
     },
     twitter: {
@@ -72,8 +76,47 @@ export default function AdventureDetailPage({ params }: { params: Params }) {
     ? `https://wa.me/${contact.whatsAppNumber}?text=${encodeURIComponent(baseMessage)}`
     : null;
 
+  const pageUrl = `${seo.siteUrl}/adventures/${adventure.slug}`;
+  const adventureImage = adventure.image.startsWith('http')
+    ? adventure.image
+    : `${seo.siteUrl}${adventure.image}`;
+
+  const touristAttractionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristAttraction',
+    '@id': `${pageUrl}#attraction`,
+    name: `${adventure.title} in Pokhara`,
+    description: adventure.description,
+    image: adventureImage,
+    url: pageUrl,
+    isAccessibleForFree: false,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Pokhara',
+      addressRegion: 'Gandaki',
+      addressCountry: 'NP',
+    },
+    provider: {
+      '@type': 'LocalBusiness',
+      name: hotel.legalName,
+      url: seo.siteUrl,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: seo.siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Adventures', item: `${seo.siteUrl}/adventures` },
+      { '@type': 'ListItem', position: 3, name: adventure.title, item: pageUrl },
+    ],
+  };
+
   return (
     <main className="bg-secondary pb-16 pt-10 sm:pb-24 sm:pt-16">
+      <JsonLd data={touristAttractionJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <Breadcrumbs
           segments={[

@@ -4,6 +4,7 @@ import './globals.css';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFloating } from '@/components/WhatsAppFloating';
+import { JsonLd } from '@/components/JsonLd';
 import { siteContent } from '@/config/site-content';
 
 const montserrat = Montserrat({
@@ -18,16 +19,35 @@ const inter = Inter({
   display: 'swap',
 });
 
-const { seo, siteName } = siteContent;
+const { seo, siteName, hotel } = siteContent;
+const siteUrl = seo.siteUrl;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(seo.siteUrl),
+  metadataBase: new URL(siteUrl),
   title: {
     default: seo.title,
     template: `%s | ${siteName}`,
   },
   description: seo.description,
   keywords: seo.keywords,
+  alternates: {
+    canonical: siteUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  verification: {
+    // Add your Google Search Console verification meta content here, e.g.
+    // google: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -41,8 +61,9 @@ export const metadata: Metadata = {
     title: seo.title,
     description: seo.description,
     type: 'website',
-    url: seo.siteUrl,
+    url: siteUrl,
     siteName,
+    locale: 'en_US',
     images: [
       {
         url: seo.defaultImage,
@@ -55,15 +76,53 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     site: `@${seo.twitterHandle}`,
+    creator: `@${seo.twitterHandle}`,
     title: seo.title,
     description: seo.description,
     images: [seo.defaultImage],
   },
+  category: 'travel',
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: hotel.legalName,
+  alternateName: hotel.alternateName,
+  url: siteUrl,
+  logo: `${siteUrl}/images/icons/logo.png`,
+  sameAs: hotel.sameAs,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+977-9856057003',
+    contactType: 'customer service',
+    areaServed: 'NP',
+    availableLanguage: ['en'],
+  },
+};
+
+const webSiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: siteName,
+  description: seo.description,
+  publisher: { '@id': `${siteUrl}/#organization` },
+  inLanguage: 'en',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
+      <head>
+        <JsonLd data={organizationJsonLd} />
+        <JsonLd data={webSiteJsonLd} />
+      </head>
       <body className="min-h-screen bg-secondary">
         <Navigation />
         <main>{children}</main>
