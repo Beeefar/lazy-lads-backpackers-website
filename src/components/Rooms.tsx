@@ -12,7 +12,7 @@ export function Rooms() {
   const { rooms, status } = useRoomAvailability({ limit: 10 });
 
   return (
-    <section id="rooms" className="bg-secondary py-16 sm:py-24">
+    <section id="rooms" className="bg-sand py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* ── Section header ──────────────────────────────────────────────── */}
         <motion.div
@@ -23,10 +23,11 @@ export function Rooms() {
           transition={{ duration: 0.5 }}
         >
           <div>
-            <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-primary sm:text-4xl">
               {siteContent.rooms.sectionTitle}
             </h2>
-            <p className="mt-2 text-gray-600">{siteContent.rooms.sectionSubtitle}</p>
+            <span className="mt-4 block h-0.5 w-14 rounded-full bg-gold/70" />
+            <p className="mt-4 text-gray-600">{siteContent.rooms.sectionSubtitle}</p>
 
             <div className="mt-2 flex items-center gap-1.5 text-xs h-4">
               {status === 'loading' && (
@@ -47,7 +48,7 @@ export function Rooms() {
           {/* View all rooms CTA */}
           <Link
             href="/rooms"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-secondary shrink-0"
+            className="inline-flex items-center gap-1.5 rounded-full border border-primary px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-secondary shrink-0"
           >
             View all rooms
             <ArrowRight size={15} />

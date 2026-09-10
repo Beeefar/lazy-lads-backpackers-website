@@ -15,8 +15,8 @@ export function Navigation() {
   const [adventuresOpen, setAdventuresOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-secondary border-b border-accent">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-accent bg-secondary/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 sm:gap-3">
@@ -90,7 +90,7 @@ export function Navigation() {
 
           <BookingModal
             label={nav.bookNowLabel}
-            className="rounded-lg bg-primary px-5 py-2.5 font-heading font-semibold text-secondary shadow-md hover:bg-primary/90 transition-colors"
+            className="rounded-full bg-primary px-6 py-2.5 font-heading font-semibold text-secondary shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary/90"
           />
         </nav>
 
@@ -154,7 +154,7 @@ export function Navigation() {
 
             <BookingModal
               label={nav.bookNowLabel}
-              className="w-full rounded-lg bg-primary px-5 py-3 font-heading font-semibold text-secondary text-center"
+              className="mt-1 w-full rounded-full bg-primary px-5 py-3.5 text-center font-heading font-semibold text-secondary shadow-md"
             />
           </div>
         </div>

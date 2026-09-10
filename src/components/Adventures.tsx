@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { siteContent } from '@/config/site-content';
 import { motion } from 'framer-motion';
-import { Mountain, Clock, Zap } from 'lucide-react';
+import { Mountain, Clock, Zap, ArrowRight } from 'lucide-react';
 
 const { adventures } = siteContent;
 
@@ -33,7 +33,7 @@ export function AdventureCategoryBadge({ category }: { category: AdventureCatego
   if (!config) return null;
   const { Icon, className } = config;
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold tracking-wide ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold tracking-wide shadow-sm backdrop-blur ${className}`}>
       <Icon size={12} strokeWidth={2.5} />
       {category}
     </span>
@@ -45,25 +45,26 @@ const previewItems = adventures.items.slice(0, HOMEPAGE_LIMIT);
 
 export function Adventures() {
   return (
-    <section id="adventures" className="bg-accent py-16 sm:py-24">
+    <section id="adventures" className="bg-secondary py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
-          className="text-center"
+          className="mx-auto max-w-2xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-primary text-balance sm:text-4xl">
             {adventures.sectionTitle}
           </h2>
-          <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-3 leading-relaxed text-gray-600">
             {adventures.sectionSubtitle}
           </p>
+          <span className="mx-auto mt-5 block h-0.5 w-14 rounded-full bg-gold/70" />
         </motion.div>
 
         <div
-          className="mt-10 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 sm:snap-none lg:grid-cols-4"
+          className="mt-12 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 sm:snap-none lg:grid-cols-4"
           style={{ scrollbarWidth: 'none' }}
         >
           {previewItems.map((item, index) => {
@@ -72,37 +73,38 @@ export function Adventures() {
             return (
               <motion.article
                 key={item.id}
-                className="group flex-shrink-0 w-72 snap-start flex flex-col overflow-hidden rounded-2xl border border-accent bg-secondary shadow-sm hover:shadow-md transition-shadow sm:w-auto sm:flex-shrink"
+                className="group flex w-72 flex-shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-accent bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:w-auto sm:flex-shrink"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.06 }}
               >
-                {/* Image Container with overflow-hidden */}
-                <div className="relative h-48 flex-shrink-0 overflow-hidden">
+                <div className="relative h-52 flex-shrink-0 overflow-hidden">
                   <Image
                     src={item.image}
                     alt={altText}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 640px) 288px, (max-width: 1024px) 50vw, 25vw"
                     unoptimized={isExternal && item.image.startsWith('https://images.unsplash.com')}
                   />
-                  <div className="absolute top-3 left-3 z-10">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+                  <div className="absolute left-3 top-3 z-10">
                     <AdventureCategoryBadge category={item.category as AdventureCategory} />
                   </div>
                 </div>
 
                 <div className="flex flex-1 flex-col p-4">
                   <h3 className="font-heading text-base font-bold text-primary">{item.title}</h3>
-                  <p className="mt-1.5 text-xs text-gray-600 flex-1 line-clamp-3">
+                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-gray-600 line-clamp-3">
                     {item.description}
                   </p>
                   <Link
                     href={`/adventures/${item.slug}`}
-                    className="mt-3 inline-block text-xs font-semibold text-primary underline underline-offset-4 hover:no-underline"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-gold"
                   >
-                    Learn more →
+                    Learn more
+                    <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
               </motion.article>
@@ -115,7 +117,7 @@ export function Adventures() {
         </p>
 
         <motion.div
-          className="mt-10 flex justify-center"
+          className="mt-12 flex justify-center"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -123,23 +125,10 @@ export function Adventures() {
         >
           <Link
             href="/adventures"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3 font-heading font-semibold text-secondary shadow-md hover:bg-primary/90 transition-colors"
+            className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-primary px-7 py-3 font-heading font-semibold text-secondary shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary/90"
           >
             View All {adventures.items.length} Adventures
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            <ArrowRight size={17} strokeWidth={2.5} aria-hidden="true" />
           </Link>
         </motion.div>
       </div>
