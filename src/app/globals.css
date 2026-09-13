@@ -6,6 +6,8 @@
   --primary: #1e3a8a;
   --secondary: #ffffff;
   --accent: #f8fafc;
+  --sand: #f6f3ec;
+  --gold: #c6893e;
 }
 
 body {
@@ -13,6 +15,10 @@ body {
 }
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: rgba(30, 58, 138, 0.14);
 }
 
 /* Hide scrollbar for carousel */
