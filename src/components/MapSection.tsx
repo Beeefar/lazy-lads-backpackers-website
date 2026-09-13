@@ -44,23 +44,24 @@ export function MapSection() {
 
         {/* Section header */}
         <motion.div
-          className="text-center"
+          className="mx-auto max-w-2xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-heading text-3xl font-bold text-primary sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-primary text-balance sm:text-4xl">
             {map.sectionTitle}
           </h2>
-          <p className="mt-2 text-gray-600">{map.sectionSubtitle}</p>
+          <p className="mt-3 leading-relaxed text-gray-600">{map.sectionSubtitle}</p>
           {map.address && (
             <p className="mt-3 text-sm font-medium text-primary/80">{map.address}</p>
           )}
+          <span className="mx-auto mt-5 block h-0.5 w-14 rounded-full bg-gold/70" />
         </motion.div>
 
         {/* Contact cards */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {contactCards.map(({ id, label, value, href, Icon, iconBg }, index) => {
             if (!value || !href) return null;
             return (
@@ -69,7 +70,7 @@ export function MapSection() {
                 href={href}
                 target={id === 'whatsapp' ? '_blank' : undefined}
                 rel={id === 'whatsapp' ? 'noopener noreferrer' : undefined}
-                className="group flex items-center gap-4 rounded-xl border border-accent bg-white px-5 py-4 shadow-sm transition-shadow hover:shadow-md"
+                className="group flex min-h-[64px] items-center gap-4 rounded-2xl border border-accent bg-white px-5 py-4 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lift"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -95,7 +96,7 @@ export function MapSection() {
 
         {/* Map embed */}
         <motion.div
-          className="mt-8 overflow-hidden rounded-xl border border-accent shadow-md"
+          className="mt-8 overflow-hidden rounded-2xl border border-accent shadow-soft"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

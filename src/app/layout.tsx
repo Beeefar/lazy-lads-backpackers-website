@@ -118,7 +118,7 @@ const webSiteJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
+    <html lang="en" className={`${montserrat.variable} ${inter.variable} bg-secondary`}>
       <head>
         <JsonLd data={organizationJsonLd} />
         <JsonLd data={webSiteJsonLd} />
